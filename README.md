@@ -60,11 +60,11 @@ Data Binding
 
 Angular conecta la clase (modelo) con la vista por bindings:
 Interpolación ({{ }}): renderiza expresiones como texto en la plantilla. 
-Ej.: <h1>{{ title }}</h1>
+Ej.: "<h1>{{ title }}</h1>"
 Property binding ([prop]="value"): enlaza propiedades DOM/inputs a valores del componente (tipos no sólo string).
- Ej.: <img [src]="product.imageUrl">.
+ Ej.: "<img [src]="product.imageUrl">".
 Event binding ((event)="handler()"): escucha eventos del DOM y ejecuta métodos TS. 
-Ej.: <button (click)="addToCart(p)">Añadir</button>.
+Ej.: "<button (click)="addToCart(p)">Añadir</button>".
 
 
 Estos mecanismos están descritos y especificados en la guía de sintaxis de binding y en la guía de plantillas.(Angular, s/f-c)
@@ -75,15 +75,15 @@ Directivas estructurales
 
 *ngFor: itera colecciones y replica un template por cada elemento. 
 Sintaxis típica: 
-<li *ngFor="let item of items; let i = index">{{ i+1 }} - {{ item.name }}</li>. Es la forma abreviada del NgForOf. Angular
+"<li *ngFor="let item of items; let i = index">{{ i+1 }} - {{ item.name }}</li>". Es la forma abreviada del NgForOf. Angular
 
 
 *ngIf: incluye o excluye elementos del DOM según una expresión booleana. 
-Ej.: <p *ngIf="isAvailable">Disponible</p>;
+Ej.: "<p *ngIf="isAvailable">Disponible</p>";
  también existe la forma *ngIf; else para manejar el bloque alterno. (Ver guía de directivas estructurales)..(Angular, s/f-d)
 Decoradores @Input y @Output
 @Input(): marca propiedades del componente hijo que pueden recibir datos desde el padre. Ej.: @Input() name!: string; y en el padre: 
-<app-product-card [name]="product.name"></app-product-card>.
+"<app-product-card [name]="product.name"></app-product-card>".
 
 @Output(): marca propiedades que son EventEmitter para emitir eventos al padre. Ej.:
 @Output() selected = new EventEmitter<number>();
