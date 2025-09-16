@@ -1,0 +1,7 @@
+{
+  "name": "Catálogo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
