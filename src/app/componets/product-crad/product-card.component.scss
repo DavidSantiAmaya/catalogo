@@ -1,0 +1,10 @@
+.product-card {
+  margin: 8px;
+  .product-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+}

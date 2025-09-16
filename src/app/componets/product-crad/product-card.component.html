@@ -1,0 +1,10 @@
+<ion-card class="product-card">
+  <img class="product-image" [src]="image" [alt]="name" />
+  <ion-card-header>
+    <ion-card-title>{{ name }}</ion-card-title>
+    <ion-card-subtitle>\${{ price }}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-button expand="block" (click)="viewDetail.emit()">Ver detalle</ion-button>
+  </ion-card-content>
+</ion-card>

@@ -1,3 +1,20 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Catálogo</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-list>
+      <app-product-card
+        *ngFor="let p of products"
+        [name]="p.name"
+        [price]="p.price"
+        [image]="p.image"
+        (viewDetail)="mostrarDetalle(p)">
+      </app-product-card>
+    </ion-list>
+  </ion-content>
 </ion-app>
+
