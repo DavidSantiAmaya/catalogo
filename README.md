@@ -4,7 +4,9 @@ Componentes básicos
 
 
 Qué es un componente y su estructura (decorador @Component, selector, template, style).
-Un componente es la unidad básica de la UI en Angular: una clase TypeScript marcada con el decorador @Component que asocia una plantilla (template), selector y estilos para renderizar una parte de la aplicación. El decorador @Component provee la metainformación (selector, templateUrl/template, styleUrls/styles, etc.) que Angular usa para crear e instanciar el componente en tiempo de ejecución. Ejemplo:
+En Angular, un componente es la unidad fundamental de la interfaz de usuario. Se trata de una clase en TypeScript marcada con el decorador @Component, el cual define metainformación como el selector, el template (o templateUrl) y los estilos (styles o styleUrls). Estos elementos permiten a Angular renderizar y manejar la lógica de una parte específica de la aplicación. 
+
+Ejemplo:
 import { Component } from '@angular/core';
 
 @Component({
@@ -19,19 +21,19 @@ export class ProductCardComponent {
 
 
 Diferencia entre un componente de página (vista completa) y uno reutilizable (ej. ProductCard).
-Componente de página (vista completa): representa una pantalla o ruta completa (p. ej. HomeComponent, ProductListPage). Su alcance es mayor y normalmente está ligado al router.
 
+Componente de página (vista completa): representa una pantalla entera o ruta específica (ejemplo: HomeComponent, ProductListPage). Su responsabilidad es mayor y suele estar asociada al enrutador.
 
-Componente reutilizable: pieza pequeña y autónoma que se inserta muchas veces en distintas vistas (p. ej. ProductCard, Navbar); se diseña con entrada (@Input) y salidas (@Output) claras para maximizar su reutilización.
+Componente reutilizable: es más pequeño, independiente y puede integrarse en diferentes vistas (ejemplo: ProductCard, Navbar). Generalmente se diseña con entradas (@Input) y salidas (@Output) claras para que sea flexible y reutilizable.
 
-
-Esta distinción es práctica y arquitectónica: las páginas orquestan múltiples componentes reutilizables y estado; los componentes reutilizables encapsulan presentación y API mínima. (Ver guía de arquitectura de componentes).(Angular, s/f-b).
+En términos arquitectónicos, las páginas coordinan varios componentes reutilizables y manejan el estado; mientras que los componentes reutilizables encapsulan únicamente la presentación y una API mínima (Angular, s/f-b).
 
 Standalone Components (Angular 15+)
 
 
 Qué significa que no hay módulos (NgModule).
-Desde Angular 14/15 se introdujo el modelo standalone: las clases marcadas con standalone: true no necesitan ser declaradas en un NgModule. Esto permite declarar un componente como independiente y importar directamente los recursos que requiere (CommonModule, otros componentes, pipes, etc.) en su propio metadato imports. Ejemplo:
+A partir de Angular 14/15 se introdujeron los standalone components. Estos permiten declarar componentes con standalone: true, lo que elimina la necesidad de definirlos dentro de un NgModule. Ahora, cada componente puede importar directamente sus dependencias (como CommonModule, otros componentes, directivas o pipes) en el propio campo imports del decorador.
+Ejemplo:
 
 @Component({
   selector: 'app-root',
@@ -41,17 +43,18 @@ Desde Angular 14/15 se introdujo el modelo standalone: las clases marcadas con s
 })
 export class AppComponent {}
 
-
-El objetivo es reducir el boilerplate y permitir adopción incremental; las aplicaciones pueden mezclar componentes standalone y NgModules.(Angular, s/f)
+Este enfoque reduce el código repetitivo (boilerplate) y facilita la adopción progresiva, ya que es posible combinar componentes standalone con módulos tradicionales(Angular, s/f)
 
 
 Uso de la propiedad standalone: true.
-Colocar standalone: true en el @Component({...}) indica que el componente es autónomo y puede ser usado directamente (por ejemplo en el router o importado en otros componentes) sin estar declarado en un NgModule. Cuando es standalone, debes listar en imports todo lo que necesites (directivas, pipes, módulos comunes).(Angular, s/f)
+
+Cuando se incluye standalone: true en un componente, este pasa a ser autónomo y puede usarse directamente en rutas o en otros componentes, sin necesidad de declararlo en un módulo. La clave está en especificar en imports todo lo que el componente requiera (directivas, pipes o módulos básicos como CommonModule) (Angular, s/f).
 
 
 Importación de otros componentes/módulos dentro de imports.
-En un componente standalone el campo imports funciona como el lugar para declarar dependencias que antes se ponían en NgModule. Allí se pueden incluir CommonModule, FormsModule, otros componentes standalone, pipes o directivas que el template necesita. Esto hace explícitas las dependencias al nivel del componente. Ejemplo: imports: [CommonModule, FormsModule, ProductCardComponent].(Angular, s/f)
+En un componente standalone el campo imports funciona como el lugar para declarar dependencias que antes se ponían en NgModule. Allí se pueden incluir CommonModule, FormsModule, otros componentes standalone, pipes o directivas que el template necesita. Esto hace explícitas las dependencias al nivel del componente. 
 
+Ejemplo: imports: [CommonModule, FormsModule, ProductCardComponent].(Angular, s/f)
 
 Data Binding
 
